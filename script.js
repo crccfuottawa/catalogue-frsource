@@ -202,25 +202,6 @@ function renderRecords() {
   pageRecords.forEach(record => {
     const card = template.content.cloneNode(true);
 
-    const regionMeta = card.querySelector(".record-region");
-    const regions = splitOptions(record["Régions"]);
-
-    if (regions.length) {
-      regions.forEach(region => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "region-link";
-        button.textContent = region;
-        button.title = `Afficher toutes les notices de la région « ${region} »`;
-        button.addEventListener("click", () => {
-          runLinkedSearch(elements.regionFilter, region);
-        });
-        regionMeta.appendChild(button);
-      });
-    } else {
-      regionMeta.textContent = "Notice";
-    }
-
     card.querySelector(".record-number").textContent =
       record["Numéro notice"]
         ? `Notice ${record["Numéro notice"]}`
@@ -232,9 +213,6 @@ function renderRecords() {
     card.querySelector(".record-title").textContent =
       articleTitle || containerTitle || "Sans titre";
 
-    card.querySelector(".record-source").textContent =
-      articleTitle && containerTitle ? containerTitle : "";
-
     const dl = card.querySelector(".record-details");
 
     addClickableAuthors(dl, "Auteur", record.Auteurs);
@@ -243,6 +221,10 @@ function renderRecords() {
       "Auteur collectif",
       record["Auteurs collectifs"]
     );
+
+    if (articleTitle && containerTitle) {
+      addDetail(dl, "Titre", containerTitle);
+    }
 
     addDetail(dl, "Collection", record.Collection);
     addDetail(dl, "Date", record.Date);
@@ -261,6 +243,27 @@ function renderRecords() {
     addDetail(dl, "Éditeur", record["Éditeur"]);
     addDetail(dl, "Lieu", record.Lieu);
     addDetail(dl, "Notes", record.Notes);
+
+    const regionList = card.querySelector(".region-list");
+
+    splitOptions(record["Régions"]).forEach(region => {
+      const tag = document.createElement("button");
+      tag.type = "button";
+      tag.className = "region-tag";
+      tag.textContent = region;
+      tag.title =
+        `Afficher toutes les notices de la région « ${region} »`;
+      tag.setAttribute(
+        "aria-label",
+        `Rechercher la région ${region}`
+      );
+
+      tag.addEventListener("click", () => {
+        runLinkedSearch(elements.regionFilter, region);
+      });
+
+      regionList.appendChild(tag);
+    });
 
     const subjectList = card.querySelector(".subject-list");
 
