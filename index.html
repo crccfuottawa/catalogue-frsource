@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalogue Frsource</title>
+  <meta name="description" content="Catalogue bibliographique Frsource du CRCCF">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">Centre de recherche sur les francophonies canadiennes</p>
+      <h1>Catalogue Frsource</h1>
+      <p class="intro">Recherchez des articles, ouvrages et autres ressources portant sur les francophonies canadiennes.</p>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="search-panel" aria-labelledby="searchHeading">
+      <h2 id="searchHeading">Rechercher dans le catalogue</h2>
+
+      <div class="filter-grid">
+        <label>
+          Titre
+          <input id="titleFilter" type="search" placeholder="Titre de l’article, du livre ou du périodique">
+        </label>
+
+        <label>
+          Auteur
+          <input id="authorFilter" type="search" placeholder="Nom de l’auteur">
+        </label>
+
+        <label>
+          Sujet
+          <input id="subjectFilter" type="search" placeholder="Sujet ou mot-clé">
+        </label>
+
+        <label>
+          Région
+          <select id="regionFilter">
+            <option value="">Toutes les régions</option>
+          </select>
+        </label>
+
+        <label>
+          Année de début
+          <input id="startYearFilter" type="number" inputmode="numeric" min="1500" max="2100" placeholder="Ex. 1970">
+        </label>
+
+        <label>
+          Année de fin
+          <input id="endYearFilter" type="number" inputmode="numeric" min="1500" max="2100" placeholder="Ex. 2000">
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="searchButton" type="button" class="primary">Rechercher</button>
+        <button id="resetButton" type="button" class="secondary">Réinitialiser</button>
+      </div>
+    </section>
+
+    <section class="results-section" aria-labelledby="resultsHeading">
+      <div class="results-heading" id="resultsHeading">
+        <h2>Résultats</h2>
+        <p id="resultCount" aria-live="polite">Chargement…</p>
+      </div>
+
+      <div id="results"></div>
+      <nav id="pagination" class="pagination" aria-label="Pagination des résultats"></nav>
+    </section>
+  </main>
+
+  <template id="recordTemplate">
+    <article class="record-card">
+      <div class="record-meta">
+        <span class="record-region"></span>
+        <span class="record-number"></span>
+      </div>
+      <h3 class="record-title"></h3>
+      <p class="record-source"></p>
+      <dl class="record-details"></dl>
+      <div class="subject-list" aria-label="Sujets"></div>
+    </article>
+  </template>
+
+  <script src="script.js?v=1"></script>
+</body>
+</html>
