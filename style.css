@@ -212,33 +212,32 @@ input:focus, select:focus {
 
 
 .region-list {
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-top:15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 15px;
 }
 
 .region-tag {
-  appearance:none;
-  background:var(--accent);
-  color:white;
-  border:1px solid var(--accent);
-  border-radius:999px;
-  padding:4px 10px;
-  font-size:.88rem;
-  font-weight:700;
-  line-height:1.4;
-  cursor:pointer;
+  appearance: none;
+  background: #8f001a;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 4px 9px;   
+  font-size: .88rem;    
+  line-height: 1.4;     
+  cursor: pointer;
 }
 
 .region-tag:hover {
-  background:var(--accent-dark);
-  border-color:var(--accent-dark);
-  text-decoration:underline;
+  background: #740015;
+  border-color: #740015;
+  text-decoration: underline;
 }
 
 .region-list:empty {
-  display:none;
+  display: none;
 }
 
 .subject-list {
