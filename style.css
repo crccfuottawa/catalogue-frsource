@@ -144,34 +144,33 @@ input:focus, select:focus {
 }
 
 .record-card {
-  padding:20px 22px;
-  border-left:5px solid var(--accent);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  padding: 18px 20px;
 }
 
 .record-meta {
-  display:flex;
-  justify-content:space-between;
-  gap:14px;
-  color:var(--muted);
-  font-size:.88rem;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:.035em;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+  font-size: .9rem;
 }
 
 .record-title {
-  margin:8px 0 2px;
-  color:#1f2022;
-  font-size:1.3rem;
-  line-height:1.3;
+  margin: 8px 0 12px;
+  color: #1f2022;
+  font-size: 1.25rem;
+  line-height: 1.3;
 }
 
-
 .record-details {
-  display:grid;
-  grid-template-columns:max-content minmax(0, 1fr);
-  gap:5px 15px;
-  margin:0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 3px 12px;
+  margin: 0;
 }
 
 .record-details dt { font-weight:700; }
